@@ -10,7 +10,7 @@
 #include"core.hpp"
 
 extern "C" int
-luaopen_luaocv(lua_State *l)
+luaopen_ocv(lua_State *l)
 {
 	locv_core_init(l);
 #ifdef HAVE_OPENCV_IMGCODECS

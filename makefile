@@ -30,7 +30,7 @@ SRCS		:= src/luaocv.cpp src/helper.cpp \
 	src/objdetect.cpp src/imgproc.cpp
 OBJS		:= $(patsubst %.cpp, %.o, $(SRCS))
 
-LIB		:= luaocv.so
+LIB		:= ocv.so
 
 .PHONY: default clean disbuild
 
