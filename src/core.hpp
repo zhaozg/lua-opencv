@@ -10,6 +10,7 @@
 
 #include<lua.hpp>
 #include<opencv2/core.hpp>
+#include<opencv2/opencv_modules.hpp>
 
 int locv_core_type_name_to_id(lua_State *l, int idx);
 void locv_core_type_id_to_name(lua_State *l, int idx);
@@ -40,5 +41,11 @@ int locv_core_flip(lua_State *l);
 int locv_core_mat_merge(lua_State *l);
 
 void locv_core_init(lua_State *l);
+
+#if LUA_VERSION_NUM == 501
+void* lua_newuserdatauv(lua_State *L, size_t n, int x);
+int luaL_typeerror (lua_State *L, int arg, const char *tname);
+int lua_isinteger (lua_State *L, int index);
+#endif
 
 #endif	// __CORE_HPP_INC__

@@ -29,9 +29,11 @@ luaL_Reg luaocvFunctions[] = {
 	{ "flip", locv_core_flip },
 	{ "merge", locv_core_mat_merge },
 
+#ifdef HAVE_OPENCV_VIDEOIO
 	/*	imgcodecs	*/
 	{ "imread", locv_imgcodecs_imread },
 	{ "imwrite", locv_imgcodecs_imwrite },
+#endif
 
 	/*	highgui		*/
 	{ "imshow", locv_highgui_imshow },
@@ -39,8 +41,10 @@ luaL_Reg luaocvFunctions[] = {
 	{ "pollKey", locv_highgui_poll_key },
 	{ "setWindowTitle", locv_highgui_set_window_title },
 
+#ifdef HAVE_OPENCV_VIDEOIO
 	/*	videoio		*/
 	{ "VideoCapture", locv_videoio_videocapture_new },
+#endif
 
 	/*	objdetect	*/
 	{ "FaceDetectorYN", locv_objdetect_face_detector_yn_new },

@@ -13,9 +13,13 @@ extern "C" int
 luaopen_luaocv(lua_State *l)
 {
 	locv_core_init(l);
+#ifdef HAVE_OPENCV_IMGCODECS
 	locv_imgcodecs_init(l);
+#endif
 	locv_highgui_init(l);
+#ifdef HAVE_OPENCV_VIDEOIO
 	locv_videoio_init(l);
+#endif
 	locv_objdetect_init(l);
 	locv_imgproc_init(l);
 	luaL_newlib(l, luaocvFunctions);

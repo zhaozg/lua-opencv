@@ -8,9 +8,11 @@
 #include<cassert>
 
 #include<lua.hpp>
+#include"core.hpp"
+
+#ifdef HAVE_OPENCV_VIDEOIO
 #include<opencv2/videoio.hpp>
 
-#include"core.hpp"
 #include"videoio.hpp"
 #include"helper.hpp"
 
@@ -95,3 +97,4 @@ locv_videoio_init(lua_State *l)
 	locv_videoio_videocapture_init(l);
 	return;
 }
+#endif

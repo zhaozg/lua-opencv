@@ -1,7 +1,7 @@
 #!/bin/sh
 
 testdir=$(dirname $0)
-interpreter=${1:-"lua5.4"}
+interpreter=luajit
 export LUA_CPATH="$testdir/../?.so;;"
 export LUA_PATH="$testdir/?.lua;;"
 

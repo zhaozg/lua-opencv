@@ -7,10 +7,12 @@
 
 #include<lua.hpp>
 #include<opencv2/core.hpp>
+#include"core.hpp"
+
+#ifdef HAVE_OPENCV_IMGCODECS
 #include<opencv2/imgcodecs.hpp>
 
 #include"imgcodecs.hpp"
-#include"core.hpp"
 #include"helper.hpp"
 
 int
@@ -67,3 +69,4 @@ locv_imgcodecs_init(lua_State *l)
 {
 	return;
 }
+#endif

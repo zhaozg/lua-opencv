@@ -734,6 +734,37 @@ locv_core_flip(lua_State *l)
 	return 1;
 }
 
+#if LUA_VERSION_NUM == 501
+void* lua_newuserdatauv(lua_State *L, size_t n, int x)
+{
+	assert(0==x);
+	return lua_newuserdata(L, n);
+}
+
+int luaL_typeerror (lua_State *L, int arg, const char *tname) {
+  const char *msg;
+  const char *typearg;
+  if (luaL_getmetafield(L, arg, "__name") == 4)
+    typearg = lua_tolstring(L, (-1), 0);
+  else if (lua_type(L, arg) == 2)
+    typearg = "light userdata";
+  else
+    typearg = lua_typename(L, lua_type(L,(arg)));
+  msg = lua_pushfstring(L, "%s expected, got %s", tname, typearg);
+  return luaL_argerror(L, arg, msg);
+}
+
+int lua_isinteger (lua_State *L, int index) {
+  if (lua_type(L, index) == LUA_TNUMBER) {
+    lua_Number n = lua_tonumber(L, index);
+    lua_Integer i = lua_tointeger(L, index);
+    if (i == n)
+      return 1;
+  }
+  return 0;
+}
+#endif
+
 void
 locv_core_init(lua_State *l)
 {
